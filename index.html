@@ -26,6 +26,21 @@
             z-index: 1000;
         }
 
+        .loading-container {
+            text-align: center;
+            display: none; /* Initially hide the loading container */
+        }
+
+        .loading-spinner {
+            border: 8px solid #333;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
         .parallax-container {
             height: 100vh;
             overflow: hidden;
@@ -287,6 +302,8 @@
             color: #ffffff;
         }
 
+        
+
         @media only screen and (max-width: 700px) {
 
             .content-1 {
@@ -389,6 +406,11 @@
 </head>
 
 <body>
+    <div class="loading-container" id="loadingContainer">
+        <div class="loading-spinner"></div>
+        <p>Loading...</p>
+    </div>
+
     <header>
 
         <div id="nirvan talks about books"
@@ -579,6 +601,15 @@
             const translateXValue = -currentIndex * (cardWidth + 20); // 20px for card gap
             cardContainer.style.transform = `translateX(${translateXValue}px)`;
         }
+
+                // Wait for the entire page to load
+                window.addEventListener('load', function() {
+            // Get the loading container element
+            var loadingContainer = document.getElementById('loadingContainer');
+
+            // Hide the loading container
+            loadingContainer.style.display = 'none';
+        });
     </script>
 </body>
 
