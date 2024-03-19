@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book-Review Home</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #EEBC83;
+        }
+
+        header {
+            display: inline-block;
+            box-shadow: 0px 0px 50px rgb(100, 100, 100);
+            color: #ffffff;
+            cursor: pointer;
+            position: fixed;
+            top: 4%;
+            /* Height of the fixed banner.*/
+            left: 1%;
+            right: 1%;
+            border-radius: 20px;
+            width: 96%;
+            padding: 10px;
+            z-index: 1000;
+            background-color: #f7ac57;
+            opacity: 0.665;
+        }
+
+        .parallax-container {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            margin-top: 0px;
+            /* Adjust margin to avoid content being hidden behind the fixed header */
+        }
+
+        .parallax-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-color: #EEBC83;
+        }
+
+        .section-2 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-color: #EEBC83;
+        }
+
+        .content-2 {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .book-slider-container {
+            position: relative;
+            display: inline-flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            top: 50%;
+            padding: 20px;
+        }
+
+        .book-card {
+            position: relative;
+            margin-right: 10px;
+            width: 130px;
+            height: 180px;
+            color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-out;
+        }
+
+        .book-card:hover {
+            transform: translateY(-20px);
+        }
+
+        .book-card:hover .hidden-text {
+            transform: translateY(0);
+        }
+
+        .book-card img {
+            width: 130px;
+            height: 180px;
+        }
+
+        .book-hidden-text {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #000000;
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(100%);
+            opacity: 0.665;
+            text-wrap: wrap;
+        }
+
+        .book-card:hover .book-hidden-text {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+
+        <div id="nirvan talks about books" style="text-align: center;
+            padding: 5px;
+            font-family:'Courier New', Courier, monospace;
+            font-size: 1.5em;
+            color: #fff;">
+            <a href="index.html#section-2" style="color: #fff;">
+                <div style="text-align: left;">Go Back
+            </a>
+        </div>
+        <a href="index.html#section-3" style="color: #fff;">
+            <b>Nirvan Talks About Books</b></a>
+        </div>
+    </header>
+
+    <div class="parallax-container">
+        <div class="parallax-section section-2">
+            <div class="content-2">
+                <h1>Book Reviews</h1>
+            </div>
+
+            <div class="book-slider-container">
+                <!-- Your cards go here -->
+                <div class="book-card">
+                    <img src="https://i.pinimg.com/564x/e6/85/62/e68562bd294d714ff3c100cc1922b75a.jpg" alt="Card Image">
+                    <div class="book-hidden-text" style="padding: 23px; text-align: center;">
+                        <h4><b>The Power Of Now.</b></h4>
+                        <p>Spirituality/ Self-Help</p>
+                    </div>
+                </div>
+
+
+                <div class="book-card">
+                    <img src="https://i.pinimg.com/736x/66/f3/71/66f37156176a2b416cdb036dc9d5c2b1.jpg" alt="Card Image">
+                    <div class="book-hidden-text" style="padding: 8px; text-align: center;">
+                        <h4>The Hitchhiker's Guide To The Galaxy</h4>
+                        <p>Fictional/ Comedy</p>
+                    </div>
+                </div>
+
+
+                <div class="book-card">
+                    <img src="https://www.ynharari.com/wp-content/uploads/2017/02/UK-Sapiens-e1486635350531.jpg"
+                        alt="Card Image">
+                    <div class="book-hidden-text" style="padding: 35px; text-align: center;">
+                        <h4>Sapiens</h4>
+                        <p>History/
+                            Science</p>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="book-slider-container">
+        <!-- Your cards go here -->
+        <div class="book-card">
+            <img src="https://i.pinimg.com/564x/e6/85/62/e68562bd294d714ff3c100cc1922b75a.jpg" alt="Card Image">
+            <div class="book-hidden-text" style="padding: 23px; text-align: center;">
+                <h4><b>The Power Of Now.</b></h4>
+                <p>Spirituality/ Self-Help</p>
+            </div>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

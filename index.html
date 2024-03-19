@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Test</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: cursive;
+        }
+
+        header {
+            display: inline-block;
+            box-shadow: 0px 0px 50px rgb(100, 100, 100);
+            color: #ffffff;
+            cursor: pointer;
+            position: fixed;
+            top: 3%;
+            /* Height of the fixed banner.*/
+            left: 1%;
+            right: 1%;
+            border-radius: 20px;
+            width: 96%;
+            padding-bottom: 10px;
+            z-index: 1000;
+        }
+
+
+        .parallax-container {
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            margin-top: 0px;
+            /* Adjust margin to avoid content being hidden behind the fixed header */
+        }
+
+        .parallax-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            will-change: transform;
+        }
+
+        .section-1 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            will-change: transform;
+            background-image: url(home.jpg);
+        }
+
+        .section-2 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            will-change: transform;
+            background-image: url(11849.jpg);
+        }
+
+        .section-3 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #eebc83;
+        }
+
+        .section-4 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            will-change: transform;
+            background-image: url(payit.jpg);
+        }
+
+        .section-5 {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background-color: #bd947b;
+        }
+
+        .content-1 {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            position: absolute;
+            top: 50%;
+            left: 33%;
+            transform: translate(-20%, -40%);
+            text-align: center;
+            color: #f8d7a6;
+            z-index: 1;
+        }
+
+        .content-2 {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .content-3 {
+            position: absolute;
+            top: 30%;
+            left: 76%;
+            transform: translate(0%, 0%);
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .content-4 {
+            position: absolute;
+            top: 59%;
+            left: 50%;
+            transform: translate(-10%, -55%);
+            text-align: center;
+            color: #92d7e4;
+            z-index: 1;
+        }
+
+        .content-5 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+
+        m {
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+        m:hover {
+            border-radius: 10px;
+            padding: 5px;
+            box-shadow: 0px 0px 10px rgb(116, 116, 116);
+            transition: 1s;
+        }
+
+        .book-slider-container {
+            position: relative;
+            display: inline-flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            top: 50%;
+            padding: 20px;
+        }
+
+        .book-card {
+            position: relative;
+            margin-right: 10px;
+            width: 130px;
+            height: 180px;
+            color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-out;
+        }
+
+        .book-card:hover {
+            transform: translateY(-20px);
+        }
+
+        .book-card:hover .hidden-text {
+            transform: translateY(0);
+        }
+
+        .book-card img {
+            width: 130px;
+            height: 180px;
+        }
+
+        .book-hidden-text {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #000000;
+            transition: transform 0.3s ease-in-out;
+            transform: translateY(100%);
+            opacity: 0.665;
+            text-wrap: wrap;
+        }
+
+        .book-card:hover .book-hidden-text {
+            transform: translateY(0);
+        }
+
+        .blog-slider-container {
+            position: relative;
+            flex-direction: row;
+            overflow-x: auto;
+            white-space: nowrap;
+            top: 20%;
+            margin-left: 10px;
+            padding-top: 45px;
+        }
+
+        .blog-card {
+            position: relative;
+            width: 600px;
+            height: 90px;
+            color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease-out;
+            margin-top: 10px;
+            flex-direction: row;
+        }
+
+        .blog-hidden-text {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 4px;
+            box-sizing: border-box;
+            color: #25004d;
+            opacity: 0.665;
+            text-wrap: wrap;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-20px);
+        }
+
+        .blog-card:hover .blog-hidden-text {
+            transform: translateY(0);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .contact-container {
+            display: cover;
+            position: center;
+            font-size: 1.1em;
+            animation: fadeIn 1s ease-in-out;
+            align-items: center;
+            justify-content: center;
+            width: 800px;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgb(255, 255, 255);
+            opacity: 100;
+            background-color: #;
+            animation: fadeIn 3s forwards;
+            text-align: center;
+            border-radius: 10px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+
+        a {
+            color: #ffffff;
+        }
+
+
+
+        @media only screen and (max-width: 700px) {
+
+            .content-1 {
+                font-size: 3vw;
+                position: absolute;
+                top: 50%;
+                left: 10%;
+                transform: translate(-5%, -50%);
+                text-align: center;
+                z-index: 1;
+                font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                color: #f8d7a6;
+            }
+
+            .content-2 {
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: #fff;
+                z-index: 1;
+            }
+
+            .content-3 {
+                position: absolute;
+                top: 20%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: #fff;
+                z-index: 1;
+            }
+
+            .content-4 {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 3vw;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: #92d7e4;
+                z-index: 1;
+            }
+
+            .content-5 {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                text-align: center;
+                color: #fff;
+                z-index: 1;
+            }
+
+            .blog-slider-container {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                overflow-x: auto;
+                white-space: nowrap;
+                top: 35%;
+                margin-left: 10px;
+                padding-top: 20px;
+            }
+
+            .blog-card {
+                position: relative;
+                width: 100vw;
+                height: 100px;
+                color: #fff;
+                border-radius: 10px;
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 0.3s ease-out;
+                margin-top: 10px;
+            }
+
+            .blog-card img {
+                width: 100%;
+                height: auto;
+            }
+
+            .book-card {
+                position: relative;
+                margin-right: 10px;
+                width: auto;
+                height: auto;
+                color: #fff;
+                border-radius: 10px;
+                overflow: hidden;
+                cursor: pointer;
+                transition: transform 0.3s ease-out;
+            }
+
+            .book-card img {
+                width: 20vw;
+                height: 29vw;
+            }
+
+            .blog-hidden-text {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                padding: 5px;
+                box-sizing: border-box;
+                background-color: #666666;
+                color: #25004d;
+                transform: translateY(0);
+                opacity: 0.665;
+                text-wrap: wrap;
+            }
+
+            .blog-card:hover {
+                transform: translateY(0px);
+            }
+
+            .blog-card:hover .blog-hidden-text {
+                transform: translateY(0);
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+
+        <div id="nirvan talks about books" style="text-align: center;
+            padding: 10px;
+            padding-top: 5px;
+            font-family:'Courier New', Courier, monospace;
+            font-size: 1em;" onclick="scrollToSection('.section-1')">
+            <b>Nirvan Talks About Books</b>
+            <hr>
+        </div>
+
+        <div style="text-align: center;">
+            <div style="display: inline-block;" onclick="scrollToSection('.section-1')">
+                <m><b>Home</b></m>
+            </div>
+            <div style="display: inline-block;" onclick="scrollToSection('.section-2')"><b>
+                    <m>Book Reviews
+                </b></m>
+            </div>
+            <div style="display: inline-block;" onclick="scrollToSection('.section-3')"><b>
+                    <m>Blog
+                </b></m>
+            </div>
+            <div style="display: inline-block;" onclick="scrollToSection('.section-4')"><b>
+                    <m>Pay It Forward
+                </b></m>
+            </div>
+            <div style="display: inline-block;" onclick="scrollToSection('.section-5')">
+                <m><b>Contact Me</b></m>
+            </div>
+        </div>
+    </header>
+
+
+    <div class="parallax-container">
+        <div class="parallax-section section-1">
+            <div class="content-1">
+                <h1>Exploring the dimensions of conciousness and the beautiful intricacies of human life.</h1>
+                <p>Ever wonder why we exist? Why we do all the things that we do?
+                    Why even live this meaningless life if one day its all going to end?
+                    Why am I studying trigonometry?
+                    Free Will or Destiny?
+                    Is everything written or am I the one who is writing?
+                    What is going on?
+                    What is enlightenment?
+                    If you wonder about these questions then you are at the right place, but I am not promising any
+                    answers.
+                    Nonetheless, you can expect to find my cognitive biases on
+                    Life,
+                    Spirituality,
+                    Consciousness,
+                    Religion,
+                    Books/Literature,
+                    Self-Help,
+                    Science & Technology,
+                    Contemporary Social and Global Issues,
+                    Relationships,
+                    Computers,
+                    Computer Languages, and
+                    Technical Random-Stuff.
+                    Read More in the Blog section.</p>
+                <p>ॐ</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="section-2" class="parallax-container section-2">
+        <div class="content-2">
+            <h1>Book Reviews</h1>
+            <a href="book-home.html">
+                <p>View More</p>
+            </a>
+        </div>
+
+        <div class="book-slider-container">
+            <!-- Your cards go here -->
+            <div class="book-card">
+                <img src="https://i.pinimg.com/564x/e6/85/62/e68562bd294d714ff3c100cc1922b75a.jpg" alt="Card Image">
+                <div class="book-hidden-text">
+                    <h4><b>The Power Of Now.</b></h4>
+                    <p>Spirituality/ Self-Help</p>
+                </div>
+            </div>
+
+
+            <div class="book-card">
+                <img src="https://i.pinimg.com/736x/66/f3/71/66f37156176a2b416cdb036dc9d5c2b1.jpg" alt="Card Image">
+                <div class="book-hidden-text" style="padding: 5px;">
+                    <h4>The Hitchhiker's Guide To The Galaxy</h4>
+                    <p>Fictional/ Comedy</p>
+                </div>
+            </div>
+
+            <div class="book-card">
+                <img src="back.jpg" alt="Card Image">
+                <div class="book-hidden-text">
+                    <h4>Title</h4>
+                    <p>This is the hidden text for card 1.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+    <div class="parallax-container">
+        <div id="section-3" class="section-3">
+            <div class="content-3">
+                <h1>Blog</h1>
+                <a href="blog-home.html">
+                    <p>View More</p>
+                </a>
+            </div>
+            <div class="blog-slider-container">
+                <!-- Your cards go here -->
+                <div class="blog-card">
+                    <img src="back.jpg" alt="Card Image">
+                    <div class="blog-hidden-text">
+                        <h3>Title</h3>
+                        <p>This is the hidden text for card 1.</p>
+                    </div>
+                </div>
+
+
+                <div class="blog-card">
+                    <img src="back.jpg" alt="Card Image">
+                    <div class="blog-hidden-text">
+                        <h3>Title</h3>
+                        <p>This is the hidden text for card 1.</p>
+                    </div>
+                </div>
+
+                <div class="blog-card">
+                    <img src="back.jpg" alt="Card Image">
+                    <div class="blog-hidden-text">
+                        <h3>Title</h3>
+                        <p>This is the hidden text for card 1.</p>
+                    </div>
+                </div>
+
+
+                <div class="blog-card">
+                    <img src="back.jpg" alt="Card Image">
+                    <div class="blog-hidden-text">
+                        <h3>Title</h3>
+                        <p>This is the hidden text for card 1.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="parallax-container">
+        <div class="section-4">
+            <div class="content-4">
+                <h1>Pay It Forward</h1>
+                <p>Each one of us has a unique talent. I frimly believe that every single one of us has the light to
+                    change the world no matter how big or small the change might be.
+                    I had this starling realization when one of my friends persuaded me to not throw the trash on the
+                    streets.
+                    Now every time I have some wrappers on me, I am reminded me to keep it to myself.
+                    This simple act changed my world, although it may not seem to be that big of a deal.
+                    Just like my friend, I hope you inspire the good in others and to share their individual skills to
+                    the world, making it a little bearable for as long as we are here dancing this divine dance.
+                    Lets help change the world by giving back to eachother in our own individual ways.
+                </p>
+                <p>ॐ</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="parallax-container">
+        <div class="section-5">
+            <div class="content-5">
+
+
+                <div class="contact-container">
+                    <h1>Contact Me</h1>
+                    <p>Email: <a
+                            href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJlDTGtKbkbsSkxQDvHctzwbbrbXVFpCjJJqTJrzGDZNsRdrJPPttsZGLhQblZvCqDHPPFL"
+                            target="_blank">rajtimsina403@gmail.com</a></p>
+
+
+                    <div>
+                        <a href="https://www.instagram.com/rahz.xotwod" target="_blank">Instagram</a>
+                        <a href="https://www.github.com/rajtimsina" target="_blank">Github</a>
+                        <a href="https://www.linkedin.com/in/raj-timsina-87818729b/" target="_blank">LinkedIn</a>
+                    </div>
+                </div>
+                <footer>
+                    <p>&copy; 2024 Nirvan Timsina</p>
+                </footer>
+
+
+
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        let parallaxSections = document.querySelectorAll('.parallax-section');
+
+                        window.addEventListener('scroll', function () {
+                            let scrollPosition = window.scrollY;
+
+                            parallaxSections.forEach(function (section, index) {
+                                let speed = (index + 1) * 0.5;
+                                section.style.transform = 'translateY(' + scrollPosition * speed + 'px)';
+                            });
+                        });
+                    });
+
+                    function scrollToSection(sectionClass) {
+                        let section = document.querySelector(sectionClass);
+                        section.scrollIntoView({ behavior: 'smooth' });
+                    }
+
+                    let currentIndex = 0;
+
+                    function slideCards(direction) {
+                        const cardContainer = document.querySelector('.card-container');
+                        const cardWidth = document.querySelector('.card').offsetWidth;
+                        currentIndex += direction;
+                        const translateXValue = -currentIndex * (cardWidth + 20); // 20px for card gap
+                        cardContainer.style.transform = `translateX(${translateXValue}px)`;
+                    }
+
+                </script>
+</body>
+
+</html>
